@@ -10,9 +10,11 @@ Dir.mkdir(DATA_DIR) unless File.exists?(DATA_DIR)
 
 #this is the place we're going to scrape
 BASE_URL = 'http://pm.gc.ca'
-BASE_DIR = '/eng'
-LOCAL_DIR = '/*mandate-letter'
+BASE_DIR = '/eng/ministerial-mandate-letters'
+#Then go to each of the mandate letters
+LOCAL_DIR = '/* mandate-letter'
 
+# find out what this line does
 HEADERS_HASH = {"User-Agent" => "Ruby/#{RUBY_VERSION}"}
 
 page = Nokogiri::HTML(open(LIST_URL))
@@ -21,10 +23,12 @@ page = Nokogiri::HTML(open(LIST_URL))
 # Need to modify information here
 rows[1..-2].each do |row|
   
+  #looks for the css content and wiki content
   hrefs = row.css("td a").map{ |a| 
     a['href'] if a['href'] =~ /^\/wiki\// 
   }.compact.uniq
   
+  #gets some html pages
   hrefs.each do |href|
     # remote_url = BASE_WIKIPEDIA_URL + href
     local_fname = "#{DATA_DIR}/#{File.basename(href)}.html"
