@@ -10,18 +10,22 @@ require 'Pry'
 #DATA_DIR = "committments"
 #Dir.mkdir(DATA_DIR) unless File.exists?(DATA_DIR)
 
-#this is the place we're going to crawl and scrape data from (do I need lines 14/15)
-#BASE_URL = 'http://pm.gc.ca'
-#BASE_DIR = '/eng/ministerial-mandate-letters'
-
-# find out what this line does
-#HEADERS_HASH = {"User-Agent" => "Ruby/#{RUBY_VERSION}"}
-
 # i think this opens the HTML page above
 doc = Nokogiri::HTML(open("http://www.pm.gc.ca/eng/ministerial-mandate-letters"))
+
+# go to each link in the body/main
+@doc.xpath("//html:main")
+
+
+# on each link find the following data
 @doc.xpath("//html:h1")
 @doc.xpath("//html:li")
   
-  #print out what we have?
+  Heading = 'h1'
+  BLOCKLI_ELT = 'li'
+  
+# put the titles and bullet points into a JSON file named above
 
-    
+# do this until all 30 pages have been scraped, then end the program.
+
+
