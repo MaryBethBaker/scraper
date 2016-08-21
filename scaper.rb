@@ -1,11 +1,5 @@
 # get Ruby gems that are useful for scraping
 require 'mechanize'
-# require 'Httparty'
-# require 'nokogiri'
-# require 'open-uri'
-# require 'JSON'
-# require 'Pry'
-# require 'csv'
 
 mechanize = Mechanize.new
 
