@@ -19,8 +19,8 @@ require 'Pry'
 
 # i think this opens the HTML page above
 doc = Nokogiri::HTML(open("http://www.pm.gc.ca/eng/ministerial-mandate-letters"))
-@doc.xpath("//H1")
-@doc.xpath("//li")
+@doc.xpath("//html:h1")
+@doc.xpath("//html:li")
   
   #print out what we have?
 
