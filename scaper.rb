@@ -12,7 +12,13 @@ mechanize = Mechanize.new
 # make a place to save scraped data
 
 # visit the following HTML page
-page = mechanize.get('http://pm.gc.ca/eng/leader-government-house-commons-mandate-letter')
+page = mechanize.get ('http://pm.gc.ca/eng/ministerial-mandate-letters')
+link = page.link_with(text: 'mandate-letter')
+
+page = link.click
+
+puts page.uri
+
 
 # go to each link in the body/main
 
@@ -20,7 +26,7 @@ page = mechanize.get('http://pm.gc.ca/eng/leader-government-house-commons-mandat
   
 # put the titles and bullet points into a JSON file named above
 # prints the title
-puts page.title
+    # puts page.title
 # do this until all 30 pages have been scraped, then end the program.
 
 
